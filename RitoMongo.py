@@ -35,7 +35,10 @@ def getUserInput():
         f.close();
     return res;
         
-    
+def removeJSONHead(mainJSON):
+    childJSON=mainJSON.split(str='\{');
+    childJSON.pop(0);
+    return childJSON.to_str();
 #================================= Main =============================================================================
 _InputFields= getUserInput();
 SummonerName=_InputFields[0];
@@ -49,16 +52,21 @@ SummonerID = uID_data[SummonerName.lower()]["id"];
 print "The printed SummonerID from json is : " ,SummonerID;
 
 
-# Connecting to mongoDB database
-client = MongoClient();
-db = client['RitoMongoDB'];
-collection = db["SummonerID"];
-
-print uID_data;
+#print uID_data;
 uID_data ['_id'] = uID_data['gedyhd']['id'];
-#doc['_id'] = doc['objName']['id']
+print uID_data;
+newJSON=removeJSONHead(uID_data);
 print "New UIDData is " , uID_data;
+# Connecting to mongoDB database
+#comment block
+#client = MongoClient();
+#db = client['RitoMongoDB'];
+#collection = db["SummonerID"];
+#entryID = collection.insert_one(uID_data).inserted_id;
+
+
+
 #collection.insert_one(doc)
     
 
-entryID = collection.insert_one(uID_data).inserted_id;
+
