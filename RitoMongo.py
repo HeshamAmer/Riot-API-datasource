@@ -31,7 +31,7 @@ def getUserInput():
         Region  = (raw_input('Enter your region: ')).upper();
         Key = raw_input('Enter your API Key which you retrieved from Rito website: ');
         f = open('RitoMongo.conf','w');
-        f.write('SummonerName='+SummonerName+'\nRegion='+Region+'\nAPI_Key='+Key);
+        f.write(SummonerName+'\n'+Region+'\n'+Key);
         f.close();
     return res;
         
