@@ -13,26 +13,25 @@ from pymongo import MongoClient;
 
 def getJSONReply(URL):
     response = urllib2.urlopen(URL);
-    html = response.read()
-    data = json.loads(html)
+    html = response.read();
+    data = json.loads(html);
     return data;
 
 
 def getUserInput():
-    FileExists=os.path.isfile('RitoMongo.conf') 
-    
+    FileExists=os.path.isfile('RitoMongo.conf') ;
     res=[];
     if (FileExists):
         with open('RitoMongo.conf') as f:
             for line in f:
                 res.append(line.rstrip('\n'));
                 print line.rstrip('\n');
-    elif (not FileExists):        
+    elif (not FileExists):
         SummonerName= raw_input('Enter your Summoner name: ');
         Region  = (raw_input('Enter your region: ')).upper();
         Key = raw_input('Enter your API Key which you retrieved from Rito website: ');
-        f = open('RitoMongo.conf','w')
-        f.write('SummonerName='+SummonerName+'\nRegion='+Region+'\nAPI_Key='+Key) 
+        f = open('RitoMongo.conf','w');
+        f.write('SummonerName='+SummonerName+'\nRegion='+Region+'\nAPI_Key='+Key);
         f.close();
     return res;
         
@@ -51,12 +50,10 @@ SummonerName=_InputFields[0];
 Region=_InputFields[1];
 Key=_InputFields[2];
 print "----------------------------------------------------------------------";
-print "If you've inputted wrong data, please delete or modify RitoMongo.conf";
+print "If you've inputted wrong data, please delete or modify RitoMongo.conf" ;
 print "----------------------------------------------------------------------";
 # Retrieving the SummonerID;
-
 idURL,uID_data=ReformatJSON(SummonerName,Region,Key);
-
 SummonerID = uID_data[SummonerName.lower()]["_id"];
 print "The printed SummonerID from json is : " ,SummonerID;
 
