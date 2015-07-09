@@ -62,3 +62,4 @@ client = MongoClient();
 db = client['RitoMongoDB'];
 collection = db["SummonerID"];
 entryID = collection.insert_one(idURL).inserted_id;
+client.close();
