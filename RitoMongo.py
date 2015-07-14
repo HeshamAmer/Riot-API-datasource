@@ -82,7 +82,7 @@ db = client['RitoMongoDB'];
 SummonerID_Collection = db["SummonerID"];
 MatchHistory_Collection = db["MatchHistory"];
 RecentHistory_Collection = db["RecentHistory"];
-#entryID = SummonerID_Collection.insert_one(idURL).inserted_id;
+entryID = SummonerID_Collection.insert_one(idURL).inserted_id;
 entryID = MatchHistory_Collection.insert_one(mh_data).inserted_id;
 entryID = RecentHistory_Collection.insert_one(rdata).inserted_id;
 client.close();
